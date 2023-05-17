@@ -1,0 +1,283 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <title>Rich-Text-Editor</title>
+    <link rel="shortcut icon" href="/spell-check-solid.svg" type="image/x-icon">
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+        }
+        
+        .editor-container {
+            max-width: 600px;
+            margin: 0 auto;
+            padding: 20px;
+        }
+        
+        .editor {
+            border: 1px solid #ccc;
+            padding: 10px;
+            min-height: 278px;
+            font-size: 16px;
+        }
+        
+        .toolbar {
+            display: flex;
+            justify-content: flex-start;
+            margin-bottom: 10px;
+        }
+        
+        .toolbar button {
+            padding: 6px 12px;
+            font-size: 14px;
+            border: none;
+            background: #f1f1f1;
+            cursor: pointer;
+            margin-right: 5px;
+        }
+        
+        .toolbar input[type="color"] {
+            margin-left: 5px;
+        }
+        
+        @media screen and (max-width: 480px) {
+            .toolbar {
+                flex-wrap: wrap;
+            }
+            .toolbar button,
+            .toolbar input[type="color"] {
+                margin-bottom: 5px;
+            }
+        }
+        
+        .nav-link:hover {
+            color: red;
+            /* Change the hover color as desired */
+        }
+        
+        .active {
+            font-weight: bold;
+        }
+        
+        .h1 {
+            text-align: center;
+        }
+        /* Basic Styles */
+    </style>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
+</head>
+
+<body>
+    <div class="container sticky-top">
+        <header class="d-flex flex-wrap justify-content-center py-3 mb-4 border-bottom">
+            <a href="/" class="d-flex align-items-center mb-3 mb-md-0 me-md-auto text-dark text-decoration-none">
+                <svg class="bi me-2" width="40" height="32"><use "></use></svg>
+                <span class="fs-4">𝓡𝓲𝓬𝓱 𝓣𝓮𝔁𝓽 𝓔𝓭𝓲𝓽𝓸𝓻</span>
+            </a>
+
+            <ul class="nav ">
+                <li class="nav-item"><a href="#home" class="nav-link" aria-current="page">Home</a></li>
+                <li class="nav-item"><a href="#editor-container" class="nav-link ">Text Editor</a></li>
+                <li class="nav-item"><a href="#aboutus" class="nav-link">About us</a></li>
+                <li class="nav-item"><a href="#contactus" class="nav-link">Contact Us</a></li>
+            </ul>
+        </header>
+    </div>
+    <main id="home">
+        <div class="position-relative overflow-hidden p-3 p-md-5 m-md-3 text-center bg-light">
+            <div class="col-md-5 p-lg-5 mx-auto my-5">
+                <h1 class="display-4 fw-normal" id="text"></h1>
+                <p class="lead fw-normal">An online rich-text editor is the interface for editing rich text within web browsers, which presents the user with a "what-you-see-is-what-you-get" (WYSIWYG) editing area. The aim is to reduce the effort for users trying to express their
+                    formatting directly as valid HTML markup.</p>
+
+            </div>
+            <div class="product-device shadow-sm d-none d-md-block"></div>
+            <div class="product-device product-device-2 shadow-sm d-none d-md-block"></div>
+        </div>
+
+    </main>
+    <div class="editor-container" id="editor-container">
+        <p class="h1 fw-normal">Text Editor</p>
+        <div class="toolbar">
+            <button onclick="handleButtonClick('bold')"><b>B</b></button>
+            <button onclick="handleButtonClick('italic')"><i>I</i></button>
+            <button onclick="handleButtonClick('underline')"><u>U</u></button>
+            <input type="color" onchange="handleTextColorChange(this.value)">
+            <input type="color" onchange="handleBgColorChange(this.value)">
+        </div>
+        <div class="editor" contenteditable="true" id="editor"></div>
+    </div>
+    <div class="container my-4" id="aboutus">
+        <p class="h1 fw-normal">About Us</p>
+        <div class="row featurette d-flex justify-content-center align-items-center">
+            <div class="col-md-7">
+                <h2 class="featurette-heading">Microsoft Word <span class="text-muted">Microsoft Word is one of the most popular and widely used rich text editors.
+                </span></h2>
+                <p class="lead"> It offers a comprehensive set of features for creating and formatting documents, including various font styles, paragraph formatting, tables, images, and advanced editing tools. It also provides collaboration features, such as track changes
+                    and comments, making it a versatile choice for professional and personal use.</p>
+            </div>
+            <div class="col-md-5">
+                <img class="img-fluid" src="/annie-spratt-askpr0s66Rg-unsplash.jpg" alt="">
+
+            </div>
+        </div>
+        <div class="row featurette d-flex justify-content-center align-items-center">
+            <div class="col-md-7 order-md-2">
+                <h2 class="featurette-heading">Google Docs <span class="text-muted">Google Docs is a cloud-based rich text editor that offers real-time collaboration and seamless integration with other Google services. 
+                    </span></h2>
+                <p class="lead"> It provides a user-friendly interface and a wide range of formatting options, allowing users to create and edit documents online. Google Docs also supports add-ons and offers easy sharing and commenting features, making it an excellent
+                    choice for collaborative work..</p>
+            </div>
+            <div class="col-md-5 order-md-1">
+                <img class="img-fluid" src="/siora-photography-VtNSaArmb-o-unsplash.jpg" alt="">
+
+            </div>
+        </div>
+    </div>
+    <div class="container my-4" id="contactus">
+
+        <p class="h1 fw-normal">Contact Us</p>
+        <form>
+            <div class="form-group">
+                <label for="exampleFormControlInput1">Email address</label>
+                <input type="email" class="form-control" id="exampleFormControlInput1" placeholder="name@example.com">
+            </div>
+            <div class="form-group">
+                <label for="exampleFormControlSelect1">Select your Query</label>
+                <select class="form-control" id="exampleFormControlSelect1">
+                    <option>Web</option>
+                    <option>Tech Stack</option>
+                    <option>Technology</option>
+                    <option>Others</option>
+                </select>
+            </div>
+            <div class="form-group row">
+                <div class="col-sm-2">Are you a Member?</div>
+                <div class="col-sm-10">
+                    <div class="form-check">
+                        <input class="form-check-input" type="checkbox" id="gridCheck1">
+                        <label class="form-check-label" for="gridCheck1">
+                            Yes
+                        </label>
+                    </div>
+                </div>
+            </div>
+            <div class="form-group row">
+                <div class="col-sm-2">Are you a Professor?</div>
+                <div class="col-sm-10">
+                    <div class="form-check">
+                        <input class="form-check-input" type="checkbox" id="gridCheck2">
+                        <label class="form-check-label" for="gridCheck2">
+                            Yes
+                        </label>
+                    </div>
+                </div>
+            </div>
+            <div class="form-group row">
+                <div class="col-sm-2">Are you a Text Editor?</div>
+                <div class="col-sm-10">
+                    <div class="form-check">
+                        <input class="form-check-input" type="checkbox" id="gridCheck3">
+                        <label class="form-check-label" for="gridCheck3">
+                            Yes
+                        </label>
+                    </div>
+                </div>
+            </div>
+
+            <div class="form-group">
+                <label for="exampleFormControlTextarea1">Tell us about yourself</label>
+                <textarea class="form-control" id="exampleFormControlTextarea1" rows="3"></textarea>
+            </div>
+            <div class="form-group">
+                <label for="exampleFormControlTextarea2">Elaborate Your Concern</label>
+                <textarea class="form-control" id="exampleFormControlTextarea2" rows="3"></textarea>
+            </div>
+            <button class="btn btn-primary">Submit</button>
+        </form>
+
+    </div>
+    <footer class="footer mt-auto py-3 bg-body bg-light ">
+        <div class="container d-flex justify-content-center flex-wrap py-3">
+            <span class="text-body-secondary">&copy; 2023 Your Company Name. All rights reserved </span>
+        </div>
+    </footer>
+    <script src="https://unpkg.com/typed.js@2.0.16/dist/typed.umd.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.9.2/dist/umd/popper.min.js" integrity="sha384-IQsoLXl5PILFhosVNubq5LC7Qb9DXgDA9i+tQ8Zj3iwWAwPtgFTxbJ8NT4GN1R8p" crossorigin="anonymous"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.min.js" integrity="sha384-cVKIPhGWiC2Al4u+LWgxfKTRIcfu0JTxR+EQDz/bgldoEyl4H0zUF0QKbrJ0EcQF" crossorigin="anonymous"></script>
+
+    <script>
+        var typed = new Typed('#text', {
+            strings: ['Rich-Text Editor', '&amp; HTML Editor.'],
+            typeSpeed: 80,
+        });
+
+        // Get the editor element
+        window.addEventListener('scroll', () => {
+            const sections = document.querySelectorAll('section');
+            const navLinks = document.querySelectorAll('.nav-link');
+
+            sections.forEach((section, index) => {
+                const top = section.offsetTop;
+                const height = section.offsetHeight;
+
+                if (window.pageYOffset >= top && window.pageYOffset < top + height) {
+                    navLinks.forEach((navLink) => {
+                        navLink.classList.remove('active');
+                    });
+                    navLinks[index].classList.add('active');
+                }
+            });
+        });
+        const editor = document.getElementById('editor');
+
+        // Function to format selected text
+        function formatText(command, value = null) {
+            document.execCommand(command, false, value);
+        }
+
+        // Function to handle toolbar button clicks
+        function handleButtonClick(command, value = null) {
+            formatText(command, value);
+            editor.focus();
+        }
+
+        // Function to handle text color picker change
+        function handleTextColorChange(color) {
+            formatText('foreColor', color);
+            editor.focus();
+        }
+
+        // Function to handle background color picker change
+        function handleBgColorChange(color) {
+            formatText('backColor', color);
+            editor.focus();
+        }
+
+        // Function to handle keyboard shortcuts
+        function handleKeyDown(event) {
+            if (event.ctrlKey || event.metaKey) {
+                switch (event.key) {
+                    case 'b':
+                        handleButtonClick('bold');
+                        event.preventDefault();
+                        break;
+                    case 'i':
+                        handleButtonClick('italic');
+                        event.preventDefault();
+                        break;
+                    case 'u':
+                        handleButtonClick('underline');
+                        event.preventDefault();
+                        break;
+                }
+            }
+        }
+
+        // Add event listeners
+        editor.addEventListener('keydown', handleKeyDown);
+    </script>
+</body>
+
+</html>
